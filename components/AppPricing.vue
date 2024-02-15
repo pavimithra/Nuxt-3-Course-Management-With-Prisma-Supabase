@@ -19,7 +19,7 @@
       >
         <div
           v-for="(tier, tierIdx) in tiers"
-          :key="tier.id"
+          :key="tier.slug"
           :class="[
             tier.mostPopular ? 'lg:z-10 lg:rounded-b-none' : 'lg:mt-8',
             tierIdx === 0 ? 'lg:rounded-r-none' : '',
@@ -30,13 +30,13 @@
           <div>
             <div class="flex items-center justify-between gap-x-4">
               <h3
-                :id="tier.id"
+                :id="tier.slug"
                 :class="[
                   tier.mostPopular ? 'text-green-600' : 'text-gray-900',
                   'text-lg font-semibold leading-8',
                 ]"
               >
-                {{ tier.name }}
+                {{ tier.title }}
               </h3>
               <p
                 v-if="tier.mostPopular"
@@ -50,7 +50,7 @@
             </p>
             <p class="mt-6 flex items-baseline gap-x-1">
               <span class="text-4xl font-bold tracking-tight text-gray-900">{{
-                tier.priceMonthly
+                tier.price
               }}</span>
               <span class="text-sm font-semibold leading-6 text-gray-600"
                 >USD</span
@@ -62,20 +62,20 @@
             >
               <li
                 v-for="feature in tier.features"
-                :key="feature"
+                :key="feature.title"
                 class="flex gap-x-3"
               >
                 <CheckIcon
                   class="h-6 w-5 flex-none text-green-600"
                   aria-hidden="true"
                 />
-                {{ feature }}
+                {{ feature.title }}
               </li>
             </ul>
           </div>
           <a
-            :href="tier.href"
-            :aria-describedby="tier.id"
+            href="#"
+            :aria-describedby="tier.slug"
             :class="[
               tier.mostPopular
                 ? 'bg-green-600 text-white shadow-sm hover:bg-green-700'
@@ -93,52 +93,5 @@
 <script setup>
 import { CheckIcon } from "@heroicons/vue/20/solid";
 
-const tiers = [
-  {
-    name: "TypeScript with Vue.js 3",
-    id: "typeScript-with-vuejs-3",
-    href: "typeScript-with-vuejs-3",
-    priceMonthly: "$24",
-    description: "Learn how to use TypeScript in your Vue projects",
-    features: [
-      "the benefits of using TypeScript with Vue",
-      "the benefits of using TypeScript with Vue",
-      "how to setup a TypeScript and Vue project",
-      "Access to the source code for all lessons",
-    ],
-    mostPopular: false,
-  },
-  {
-    name: "Laravel Nuxt Blog",
-    id: "laravel-nuxt-blog",
-    href: "#",
-    priceMonthly: "$50",
-    description:
-      "Learn how to build robust, modern Blog with Laravel and Nuxt from scratch.",
-    features: [
-      "Buy Once and enjoy the benefits for lifetime",
-      "Access to the source code for all lessons",
-      "Stream or download all chapters",
-      "Learn best coding practices for Laravel and Nuxt",
-      "Learn to Deploy",
-    ],
-    mostPopular: true,
-  },
-  {
-    name: "Pinia: The Enjoyable Vue Store",
-    id: "pinia-the-enjoyable-vue-store",
-    href: "pinia-the-enjoyable-vue-store",
-    priceMonthly: "$28",
-    description:
-      "Learn how to use Pinia for global state management in your Vue 3 applications.",
-    features: [
-      "Access to the source code for all lessons",
-      "What is state management and why Pinia?",
-      "Pinia installation and setup",
-      "Pinia and the Composition API",
-      "Pinia and the Options API",
-    ],
-    mostPopular: false,
-  },
-];
+const tiers = await useCoursesWithFeatures();
 </script>

@@ -24,7 +24,7 @@
                 </p>
                 <div class="mt-6">
                   <a
-                    href="#"
+                    href="#pricing"
                     class="inline-block rounded-md border border-transparent bg-green-600 px-8 py-3 font-medium text-white hover:bg-green-700"
                     >Buy the Course</a
                   >
@@ -85,6 +85,6 @@
       </div>
     </div>
     <!-- Pricing -->
-    <AppPricing />
+    <AppPricing id="pricing" />
   </main>
 </template>

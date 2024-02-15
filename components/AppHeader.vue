@@ -5,18 +5,22 @@
       aria-label="Global"
     >
       <div class="flex lg:flex-1">
-        <a href="#" class="-m-1.5 p-1.5">
-          <span class="sr-only">Your Company</span>
-          <img class="h-8 sm:h-10 w-auto" src="/img/logo.png" alt="" />
-        </a>
+        <NuxtLink to="/" class="-m-1.5 p-1.5">
+          <span class="sr-only">Code Mastery</span>
+          <img
+            class="h-8 sm:h-10 w-auto"
+            src="/img/logo.png"
+            alt="Code Mastery"
+          />
+        </NuxtLink>
       </div>
       <div class="hidden lg:flex lg:gap-x-12">
         <NuxtLink
           v-for="item in navigation"
           :key="item.slug"
           class="text-lg font-semibold leading-6 text-gray-900 font-oswald"
-          :to="item.href"
-          >{{ item.name }}
+          to="#"
+          >{{ item.title }}
         </NuxtLink>
       </div>
       <div class="flex flex-1 items-center justify-end gap-x-6">
@@ -60,10 +64,14 @@
         class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-4 py-4 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
       >
         <div class="flex items-center gap-x-6">
-          <a href="#" class="-m-1.5 p-1.5">
-            <span class="sr-only">Your Company</span>
-            <img class="h-8 sm:h-10 w-auto" src="/img/logoSmall.png" alt="" />
-          </a>
+          <NuxtLink to="/" class="-m-1.5 p-1.5">
+            <span class="sr-only">Code Mastery</span>
+            <img
+              class="h-8 sm:h-10 w-auto"
+              src="/img/logoSmall.png"
+              alt="Code Mastery"
+            />
+          </NuxtLink>
           <a
             href="#"
             class="flex gap-3 ml-auto rounded-md bg-white px-3 py-2 mr-4 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ring-1 ring-inset ring-gray-300"
@@ -93,13 +101,13 @@
         <div class="mt-6 flow-root">
           <div class="-my-6 divide-y divide-gray-500/10">
             <div class="space-y-2 py-6">
-              <a
+              <NuxtLink
                 v-for="item in navigation"
-                :key="item.name"
-                :href="item.href"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold font-oswald leading-7 text-gray-900 hover:bg-gray-50"
-                >{{ item.name }}</a
-              >
+                :key="item.slug"
+                class="-mx-3 block rounded-lg px-3 py-1 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                to="#"
+                >{{ item.title }}
+              </NuxtLink>
             </div>
           </div>
         </div>
@@ -111,23 +119,7 @@
 import { Dialog, DialogPanel } from "@headlessui/vue";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 
-const navigation = [
-  {
-    name: "TypeScript with Vue.js 3",
-    slug: "typeScript-with-vuejs-3",
-    href: "#",
-  },
-  {
-    name: "Pinia: The Enjoyable Vue Store",
-    slug: "pinia-the-enjoyable-vue-store",
-    href: "#",
-  },
-  {
-    name: "Laravel Nuxt Blog",
-    slug: "laravel-nuxt-blog",
-    href: "#",
-  },
-];
+const navigation = await useCourses();
 
 const mobileMenuOpen = ref(false);
 </script>
