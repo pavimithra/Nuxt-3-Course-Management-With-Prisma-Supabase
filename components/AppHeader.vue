@@ -1,5 +1,7 @@
 <template>
-  <header class="bg-white">
+  <header
+    class="bg-white sticky top-0 h-16 z-50 items-center shadow-md shadow-slate-900/5 transition duration-500"
+  >
     <nav
       class="mx-auto flex max-w-full items-center justify-between gap-x-6 p-4 lg:px-8"
       aria-label="Global"
@@ -19,7 +21,7 @@
           v-for="item in navigation"
           :key="item.slug"
           class="text-lg font-semibold leading-6 text-gray-900 font-oswald"
-          to="#"
+          :to="item.path"
           >{{ item.title }}
         </NuxtLink>
       </div>
@@ -105,7 +107,7 @@
                 v-for="item in navigation"
                 :key="item.slug"
                 class="-mx-3 block rounded-lg px-3 py-1 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                to="#"
+                :to="item.path"
                 >{{ item.title }}
               </NuxtLink>
             </div>

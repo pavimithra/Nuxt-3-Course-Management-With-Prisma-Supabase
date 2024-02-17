@@ -9,17 +9,18 @@ generator client {
 }
 
 model Course {
-  id             Int              @id @default(autoincrement())
-  title          String
-  slug           String
-  description    String
-  price          Int
-  mostPopular    Boolean
-  chapters       Chapter[]
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
-  CoursePurchase CoursePurchase[]
-  features       CourseFeature[]
+  id              Int              @id @default(autoincrement())
+  title           String
+  slug            String
+  description     String
+  firstLessonSlug String
+  price           Int
+  mostPopular     Boolean
+  chapters        Chapter[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  CoursePurchase  CoursePurchase[]
+  features        CourseFeature[]
 }
 
 model Chapter {

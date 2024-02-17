@@ -6,6 +6,7 @@ const coursesSelect = Prisma.validator<Prisma.CourseDefaultArgs>()({
   select: {
     title: true,
     slug: true,
+    firstLessonSlug: true,
   },
 });
 
@@ -26,7 +27,7 @@ export default defineEventHandler(async (): Promise<Courses[]> => {
 
   const coursesWithPath = courses.map((courses) => ({
     ...courses,
-    path: `/course/${courses.slug}`,
+    path: `/course/${courses.slug}/${courses.firstLessonSlug}`,
   }));
 
   return coursesWithPath;
