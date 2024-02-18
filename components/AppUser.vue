@@ -13,6 +13,7 @@ const logout = async () => {
   await navigateTo("/login");
 };
 
+const name = computed(() => user.value?.user_metadata.full_name);
 const email = computed(() => user.value?.user_metadata.email);
 const profile = computed(() => user.value?.user_metadata.avatar_url);
 </script>
@@ -20,7 +21,8 @@ const profile = computed(() => user.value?.user_metadata.avatar_url);
 <template>
   <div v-if="user" class="flex flex-1 items-center justify-end">
     <div class="font-oswald mr-2">
-      {{ email }}
+      <span v-if="name">{{ name }}</span>
+      <span v-else>{{ email }}</span>
     </div>
     <button
       class="rounded-md px-2 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-200 ring-1 ring-inset ring-gray-300"

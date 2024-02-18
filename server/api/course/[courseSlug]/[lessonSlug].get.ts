@@ -9,6 +9,14 @@ export default defineEventHandler(async (event) => {
     where: {
       slug: lessonSlug,
     },
+    select: {
+      title: true,
+      slug: true,
+      number: true,
+      accessCode: true,
+      videoId: true,
+      text: true,
+    },
   });
 
   if (!lesson) {

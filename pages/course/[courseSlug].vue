@@ -46,9 +46,10 @@ const course = await useCourse(courseSlug);
                 activeClass="bg-green-600 text-white"
                 class="py-3 px-5 w-full"
               >
-                <div class="min-w-0">
-                  <p class="text-sm leading-6">
+                <div class="flex min-w-0">
+                  <p class="flex items-center text-sm leading-6">
                     {{ lesson.title }}
+                    <p v-if="lesson.accessCode==='Free'" class="ml-5 text-sm font-oswald bg-blue-500 rounded-md px-2 text-white">{{ lesson.accessCode }}</p>
                   </p>
                 </div>
               </NuxtLink>
@@ -82,21 +83,6 @@ const course = await useCourse(courseSlug);
         </dl>
       </div>
     </div>
-    <NuxtErrorBoundary>
-      <NuxtPage />
-      <template #error="{ error }">
-        <p>
-          Oh no, something went wrong with the lesson!
-          <code>{{ error }}</code>
-        </p>
-        <p>
-          <button
-            class="hover:cursor-pointer bg-gray-500 text-white font-bold py-1 px-3 rounded"
-          >
-            Reset
-          </button>
-        </p>
-      </template>
-    </NuxtErrorBoundary>
+    <NuxtPage />
   </div>
 </template>

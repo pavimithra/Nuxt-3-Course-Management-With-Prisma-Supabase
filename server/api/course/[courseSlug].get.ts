@@ -7,6 +7,7 @@ const lessonSelect = Prisma.validator<Prisma.LessonDefaultArgs>()({
     title: true,
     slug: true,
     number: true,
+    accessCode: true,
   },
 });
 export type Lesson = Prisma.LessonGetPayload<typeof lessonSelect> & {
