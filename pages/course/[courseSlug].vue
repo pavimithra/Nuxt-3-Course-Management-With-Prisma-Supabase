@@ -1,3 +1,9 @@
+<script setup>
+const route = useRoute();
+const { courseSlug } = route.params;
+const course = await useCourse(courseSlug);
+</script>
+
 <template>
   <div class="mx-auto max-w-full">
     <div class="px-4 py-5 sm:px-6 lg:px-8 bg-slate-200">
@@ -94,15 +100,3 @@
     </NuxtErrorBoundary>
   </div>
 </template>
-
-<script setup>
-const route = useRoute();
-const { courseSlug } = route.params;
-const course = await useCourse(courseSlug);
-
-const stats = [
-  { name: "Total Subscribers", stat: "71,897" },
-  { name: "Avg. Open Rate", stat: "58.16%" },
-  { name: "Avg. Click Rate", stat: "24.57%" },
-];
-</script>

@@ -1,3 +1,12 @@
+<script setup>
+const props = defineProps({
+  videoId: {
+    type: Number,
+    required: true,
+  },
+});
+</script>
+
 <template>
   <div class="relative overflow-auto">
     <iframe
@@ -9,12 +18,3 @@
     ></iframe>
   </div>
 </template>
-
-<script setup>
-const props = defineProps({
-  videoId: {
-    type: Number,
-    required: true,
-  },
-});
-</script>

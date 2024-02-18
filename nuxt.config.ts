@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/google-fonts"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/google-fonts", "@nuxtjs/supabase"],
   googleFonts: {
     display: "swap",
     download: true,
@@ -16,6 +16,13 @@ export default defineNuxtConfig({
       "Dancing Script": {
         wght: [400, 500, 600, 700],
       },
+    },
+  },
+  supabase: {
+    redirectOptions: {
+      login: "/login",
+      callback: "/",
+      exclude: ["/*"], // We implement our own auth behaviour in the auth middleware
     },
   },
 });

@@ -1,3 +1,9 @@
+<script setup>
+import { CheckIcon } from "@heroicons/vue/20/solid";
+
+const tiers = await useCoursesWithFeatures();
+</script>
+
 <template>
   <div class="bg-gray-100 py-10 sm:py-14">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
@@ -89,9 +95,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { CheckIcon } from "@heroicons/vue/20/solid";
-
-const tiers = await useCoursesWithFeatures();
-</script>

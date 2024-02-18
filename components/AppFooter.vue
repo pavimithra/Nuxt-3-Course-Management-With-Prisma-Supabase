@@ -1,29 +1,3 @@
-<template>
-  <footer class="bg-gray-900" aria-labelledby="footer-heading">
-    <h2 id="footer-heading" class="sr-only">Footer</h2>
-    <div class="mx-auto max-w-full px-6 pb-8 lg:px-8">
-      <div
-        class="border-t border-white/10 pt-8 md:flex md:items-center md:justify-between"
-      >
-        <div class="flex space-x-6 md:order-2">
-          <a
-            v-for="item in navigation.social"
-            :key="item.name"
-            :href="item.href"
-            class="text-gray-300 hover:text-gray-500"
-          >
-            <span class="sr-only">{{ item.name }}</span>
-            <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
-          </a>
-        </div>
-        <p class="mt-8 text-xs leading-5 text-gray-300 md:order-1 md:mt-0">
-          &copy; 2024 Your Company, Inc. All rights reserved.
-        </p>
-      </div>
-    </div>
-  </footer>
-</template>
-
 <script setup>
 const navigation = {
   social: [
@@ -98,3 +72,29 @@ const navigation = {
   ],
 };
 </script>
+
+<template>
+  <footer class="bg-gray-900" aria-labelledby="footer-heading">
+    <h2 id="footer-heading" class="sr-only">Footer</h2>
+    <div class="mx-auto max-w-full px-6 pb-8 lg:px-8">
+      <div
+        class="border-t border-white/10 pt-8 md:flex md:items-center md:justify-between"
+      >
+        <div class="flex space-x-6 md:order-2">
+          <a
+            v-for="item in navigation.social"
+            :key="item.name"
+            :href="item.href"
+            class="text-gray-300 hover:text-gray-500"
+          >
+            <span class="sr-only">{{ item.name }}</span>
+            <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
+          </a>
+        </div>
+        <p class="mt-8 text-xs leading-5 text-gray-300 md:order-1 md:mt-0">
+          &copy; 2024 Your Company, Inc. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+</template>
