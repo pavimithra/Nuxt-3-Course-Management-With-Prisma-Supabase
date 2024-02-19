@@ -17,6 +17,7 @@ model Course {
   price           Int
   mostPopular     Boolean
   chapters        Chapter[]
+  courseBy        String
   createdAt       DateTime         @default(now())
   updatedAt       DateTime         @updatedAt
   CoursePurchase  CoursePurchase[]

@@ -4,8 +4,10 @@ CREATE TABLE "Course" (
     "title" TEXT NOT NULL,
     "slug" TEXT NOT NULL,
     "description" TEXT NOT NULL,
+    "firstLessonSlug" TEXT NOT NULL,
     "price" INTEGER NOT NULL,
     "mostPopular" BOOLEAN NOT NULL,
+    "courseBy" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -72,7 +74,7 @@ CREATE TABLE "CoursePurchase" (
 CREATE TABLE "CourseFeature" (
     "id" SERIAL NOT NULL,
     "courseId" INTEGER NOT NULL,
-    "feature" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 

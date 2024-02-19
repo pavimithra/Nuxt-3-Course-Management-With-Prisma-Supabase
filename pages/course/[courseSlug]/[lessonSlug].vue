@@ -1,7 +1,29 @@
 <script setup>
+import { useCourseProgress } from "@/stores/courseProgress.ts";
+
 const route = useRoute();
+const user = useSupabaseUser();
 const { courseSlug, lessonSlug } = route.params;
 const lesson = await useLesson(courseSlug, lessonSlug);
+const store = useCourseProgress();
+const { initialize, toggleComplete } = store;
+
+await initialize();
+
+const chapterSlug = computed(() => {
+  return `${lesson?.value.Chapter.slug}`;
+});
+
+const isProgressAvailable = computed(() => {
+  return store.progress;
+});
+
+// Check if the current lesson is completed
+const isCompleted = computed(() => {
+  return (
+    store.progress?.[`${lesson?.value.Chapter.slug}`]?.[lessonSlug] || false
+  );
+});
 </script>
 
 <template>
@@ -14,17 +36,21 @@ const lesson = await useLesson(courseSlug, lessonSlug);
       <VideoPlayer v-if="lesson.videoId" :videoId="lesson.videoId" />
     </div>
     <div class="p-5">
-      <p class="text-base font-semibold leading-7 text-indigo-600">
-        {{ lesson.videoId }}
-      </p>
       <h1
         class="mt-2 text-3xl font-bold tracking-tight text-green-600 sm:text-4xl"
       >
         {{ lesson.title }}
       </h1>
-      <p class="mt-6 text-xl leading-8 text-gray-700">
+      <p class="mt-6 text-lg leading-8 text-gray-700">
         {{ lesson.text }}
       </p>
+      <LessonCompleteButton
+        v-if="user"
+        :model-value="isCompleted"
+        @update:model-value="
+          toggleComplete(courseSlug, chapterSlug, lessonSlug)
+        "
+      />
     </div>
   </div>
 </template>

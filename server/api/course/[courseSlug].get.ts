@@ -31,6 +31,7 @@ export type Chapter = Omit<
 
 const courseWithChapters = Prisma.validator<Prisma.CourseSelect>()({
   title: true,
+  courseBy: true,
   chapters: chapterSelect,
 });
 

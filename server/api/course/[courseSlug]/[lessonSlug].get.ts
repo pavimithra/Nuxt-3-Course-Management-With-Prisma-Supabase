@@ -9,6 +9,13 @@ export default defineEventHandler(async (event) => {
     where: {
       slug: lessonSlug,
     },
+    include: {
+      Chapter: {
+        select: {
+          slug: true,
+        },
+      },
+    },
   });
 
   if (!lesson) {
