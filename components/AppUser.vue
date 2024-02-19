@@ -31,7 +31,7 @@ const profile = computed(() => user.value?.user_metadata.avatar_url);
       LOGOUT
     </button>
   </div>
-  <div v-else class="flex flex-1 items-center justify-end gap-x-6">
+  <div v-else class="flex flex-1 items-center justify-end">
     <a
       href="/login"
       class="flex gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-200 ring-1 ring-inset ring-gray-300"
