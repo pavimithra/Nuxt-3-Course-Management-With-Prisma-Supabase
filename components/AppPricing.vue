@@ -79,8 +79,7 @@ const tiers = await useCoursesWithFeatures();
               </li>
             </ul>
           </div>
-          <a
-            href="#"
+          <button
             :aria-describedby="tier.slug"
             :class="[
               tier.mostPopular
@@ -88,8 +87,10 @@ const tiers = await useCoursesWithFeatures();
                 : 'text-green-600 ring-1 ring-inset ring-green-200 hover:ring-green-500',
               'mt-8 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600',
             ]"
-            >Buy Course</a
+            @click="$emit('payment-visible', tier.slug)"
           >
+            Buy Now
+          </button>
         </div>
       </div>
     </div>

@@ -30,4 +30,11 @@ export default defineNuxtConfig({
       exclude: ["/*"], // We implement our own auth behaviour in the auth middleware
     },
   },
+  runtimeConfig: {
+    stripeSecret: "",
+    stripeWebhookSecret: "",
+    public: {
+      stripeKey: "",
+    },
+  },
 });

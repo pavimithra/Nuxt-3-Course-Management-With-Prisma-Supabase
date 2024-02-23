@@ -1,3 +1,14 @@
+<script setup>
+import { useShowPayment } from "~/stores/showPayment";
+const showPaymentStore = useShowPayment();
+
+const courseSlug = ref("");
+
+const updatePayment = (slug) => {
+  courseSlug.value = slug;
+  showPaymentStore.toggleShowPayment();
+};
+</script>
 <template>
   <main>
     <!-- Hero -->
@@ -85,6 +96,11 @@
       </div>
     </div>
     <!-- Pricing -->
-    <AppPricing id="pricing" />
+    <AppPricing id="pricing" @payment-visible="updatePayment" />
+    <LazyCoursePayment
+      v-if="showPaymentStore.showPayment"
+      @close="showPaymentStore.showPayment = false"
+      :courseSlug="courseSlug"
+    />
   </main>
 </template>

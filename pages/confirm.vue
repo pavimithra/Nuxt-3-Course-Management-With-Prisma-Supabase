@@ -20,5 +20,9 @@ watch(
 </script>
 
 <template>
-  <div>Waiting for login...</div>
+  <div
+    class="flex justify-center p-10 text-5xl font-oswald m-10 text-green-600"
+  >
+    Logging In....
+  </div>
 </template>

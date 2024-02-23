@@ -1,6 +1,9 @@
 <script setup>
 import { Dialog, DialogPanel } from "@headlessui/vue";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
+import { useShowPayment } from "~/stores/showPayment";
+
+const showPaymentStore = useShowPayment();
 
 const navigation = await useCourses();
 
@@ -9,7 +12,11 @@ const mobileMenuOpen = ref(false);
 
 <template>
   <header
-    class="bg-white sticky top-0 h-16 z-50 items-center shadow-md shadow-slate-900/5 transition duration-500"
+    class="bg-white h-16 items-center shadow-md shadow-slate-900/5 transition duration-500"
+    :class="{
+      'sticky top-0 z-50': !showPaymentStore.showPayment,
+      relative: showPaymentStore.showPayment,
+    }"
   >
     <nav
       class="mx-auto flex max-w-full items-center justify-between gap-x-6 p-4 lg:px-8"
