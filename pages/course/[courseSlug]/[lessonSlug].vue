@@ -1,6 +1,10 @@
 <script setup>
 import { useCourseProgress } from "@/stores/courseProgress.ts";
 
+definePageMeta({
+  middleware: ["auth"],
+});
+
 const route = useRoute();
 const user = useSupabaseUser();
 const { courseSlug, lessonSlug } = route.params;
